@@ -55,5 +55,5 @@ def round_py2_compat(what):
     d = Context(
         prec=len(str(long(what))),  # round to integer with max precision
         rounding=decimal.ROUND_HALF_UP
-    ).create_decimal(str(what))  # str(): python 2.6 compat
+    ).create_decimal(what)
     return long(d)

@@ -15,10 +15,7 @@
 
 from __future__ import print_function
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 try:
     import Crypto.Util.number  # pylint: disable=unused-import
@@ -155,6 +152,7 @@ abs_other_ecdsa384_soa = dns.rrset.from_text('example.', 86400, 'IN', 'SOA',
 
 abs_ecdsa384_soa_rrsig = dns.rrset.from_text('example.', 86400, 'IN', 'RRSIG',
                                              "SOA 14 1 86400 20130929021229 20130921230729 63571 example. CrnCu34EeeRz0fEhL9PLlwjpBKGYW8QjBjFQTwd+ViVLRAS8tNkcDwQE NhSV89NEjj7ze1a/JcCfcJ+/mZgnvH4NHLNg3Tf6KuLZsgs2I4kKQXEk 37oIHravPEOlGYNI")
+
 
 @unittest.skipUnless(import_ok, "skipping DNSSEC tests because pycrypto is not"
                                 " installed")

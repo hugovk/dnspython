@@ -13,13 +13,11 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.name
 import dns.namedict
+
 
 class NameTestCase(unittest.TestCase):
 
@@ -100,6 +98,7 @@ class NameTestCase(unittest.TestCase):
         n = dns.name.from_text('a.b.c', None)
         v = self.rndict.get_deepest_match(n)[1]
         self.failUnless(v == 100)
+
 
 if __name__ == '__main__':
     unittest.main()

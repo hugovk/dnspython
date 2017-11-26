@@ -13,12 +13,10 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.rrset
+
 
 class RRsetTestCase(unittest.TestCase):
 
@@ -52,6 +50,7 @@ class RRsetTestCase(unittest.TestCase):
         r1 = dns.rrset.from_text('foo', 30, 'in', 'a', '10.0.0.1')
         r2 = dns.rrset.from_text('FOO', 30, 'in', 'a', '10.0.0.2', '10.0.0.1')
         self.failUnless(r1 != r2)
+
 
 if __name__ == '__main__':
     unittest.main()

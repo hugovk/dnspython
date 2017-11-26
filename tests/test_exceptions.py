@@ -13,10 +13,7 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 from dns.exception import DNSException
 
@@ -59,6 +56,7 @@ class ExceptionTestCase(unittest.TestCase):
         """Only supported kwargs are accepted."""
         with self.assertRaises(AssertionError):
             raise FormatedError(unsupported=2)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -14,12 +14,9 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 import sys
+import unittest
 sys.path.insert(0, '../')
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 
 import dns
 import dns.exception
@@ -87,6 +84,7 @@ class GRangeTestCase(unittest.TestCase):
             step = '-2'
             dns.grange.from_text('%d-%d/%s' % (start, stop, step))
         self.assertRaises(dns.exception.SyntaxError, bad)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -13,11 +13,8 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 import binascii
+import unittest
 
 import dns.exception
 import dns.flags
@@ -92,6 +89,7 @@ goodhex3 = b'04d2010f0001000000000001047777777709646e73707974686f6e' \
            b'036f726700000100010000291000ff0080000000'
 
 goodwire3 = binascii.unhexlify(goodhex3)
+
 
 class MessageTestCase(unittest.TestCase):
 
@@ -209,6 +207,7 @@ class MessageTestCase(unittest.TestCase):
         rrs2 = a.find_rrset(dns.message.ANSWER, n, dns.rdataclass.IN,
                             dns.rdatatype.SOA)
         self.failUnless(rrs1 == rrs2)
+
 
 if __name__ == '__main__':
     unittest.main()

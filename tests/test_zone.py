@@ -16,10 +16,7 @@
 from io import BytesIO, StringIO
 import filecmp
 import os
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.exception
 import dns.rdata
@@ -28,8 +25,10 @@ import dns.rdatatype
 import dns.rrset
 import dns.zone
 
+
 def here(filename):
     return os.path.join(os.path.dirname(__file__), filename)
+
 
 example_text = """$TTL 3600
 $ORIGIN example.
@@ -103,8 +102,10 @@ ns2 1w1D1h1m1S a 10.0.0.2
 
 _keep_output = True
 
+
 def _rdata_sort(a):
     return (a[0], a[2].rdclass, a[2].to_text())
+
 
 class ZoneTestCase(unittest.TestCase):
 
@@ -485,6 +486,7 @@ class ZoneTestCase(unittest.TestCase):
 
     def testZoneOriginNone(self):
         dns.zone.Zone(None)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -13,11 +13,8 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 import binascii
+import unittest
 
 import dns.update
 import dns.rdata
@@ -60,6 +57,7 @@ bar 0 NONE A 10.0.0.4
 blaz ANY A
 blaz2 ANY ANY
 """
+
 
 class UpdateTestCase(unittest.TestCase):
 
@@ -113,6 +111,7 @@ class UpdateTestCase(unittest.TestCase):
         w = update.to_wire(origin=dns.name.from_text('example'),
                            want_shuffle=False)
         self.failUnless(w == goodwire)
+
 
 if __name__ == '__main__':
     unittest.main()

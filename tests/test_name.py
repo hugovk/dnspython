@@ -15,12 +15,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 from __future__ import print_function
-
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
-
+import unittest
 from io import BytesIO
 
 import dns.name
@@ -565,7 +560,7 @@ class NameTestCase(unittest.TestCase):
         en2 = en1
         ecused1 = 5
         ecused2 = 2
-        self.failUnless(n1 == en1 and cused1 == ecused1 and \
+        self.failUnless(n1 == en1 and cused1 == ecused1 and
                         n2 == en2 and cused2 == ecused2)
 
     def testFromWire2(self):
@@ -582,8 +577,8 @@ class NameTestCase(unittest.TestCase):
         ecused1 = 5
         ecused2 = 4
         ecused3 = 4
-        self.failUnless(n1 == en1 and cused1 == ecused1 and \
-                        n2 == en2 and cused2 == ecused2 and \
+        self.failUnless(n1 == en1 and cused1 == ecused1 and
+                        n2 == en2 and cused2 == ecused2 and
                         n3 == en3 and cused3 == ecused3)
 
     def testBadFromWire1(self):
@@ -785,6 +780,7 @@ class NameTestCase(unittest.TestCase):
         e = '+16505551212'
         text = dns.e164.to_e164(n)
         self.assertEqual(text, e)
+
 
 if __name__ == '__main__':
     unittest.main()

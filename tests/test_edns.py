@@ -16,14 +16,12 @@
 
 from __future__ import print_function
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 from io import BytesIO
 
 import dns.edns
+
 
 class OptionTestCase(unittest.TestCase):
     def testGenericOption(self):
@@ -61,3 +59,7 @@ class OptionTestCase(unittest.TestCase):
         opt.to_wire(io)
         data = io.getvalue()
         self.assertEqual(data, b'\x00\x02\x38\x00\x20\x01\x4b\x98\x00\x00\x00')
+
+
+if __name__ == '__main__':
+    unittest.main()

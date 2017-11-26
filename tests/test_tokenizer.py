@@ -13,15 +13,13 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.exception
 import dns.tokenizer
 
 Token = dns.tokenizer.Token
+
 
 class TokenizerTestCase(unittest.TestCase):
 
@@ -131,6 +129,7 @@ class TokenizerTestCase(unittest.TestCase):
         self.failUnless(tokens == [Token(dns.tokenizer.IDENTIFIER, 'foo'),
                                    Token(dns.tokenizer.IDENTIFIER, 'bar'),
                                    Token(dns.tokenizer.EOL, '\n')])
+
     def testMultiline3(self):
         def bad():
             tok = dns.tokenizer.Tokenizer('foo)')
@@ -148,7 +147,7 @@ class TokenizerTestCase(unittest.TestCase):
         t1 = tok.get()
         tok.unget(t1)
         t2 = tok.get()
-        self.failUnless(t1 == t2 and t1.ttype == dns.tokenizer.IDENTIFIER and \
+        self.failUnless(t1 == t2 and t1.ttype == dns.tokenizer.IDENTIFIER and
                         t1.value == 'foo')
 
     def testUnget2(self):
@@ -198,6 +197,7 @@ class TokenizerTestCase(unittest.TestCase):
         tok = dns.tokenizer.Tokenizer(r'ch\ild')
         t = tok.get().unescape()
         self.failUnless(t.ttype == dns.tokenizer.IDENTIFIER and t.value == r'child')
+
 
 if __name__ == '__main__':
     unittest.main()

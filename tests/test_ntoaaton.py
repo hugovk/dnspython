@@ -15,11 +15,8 @@
 
 from __future__ import print_function
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 import binascii
+import unittest
 
 import dns.exception
 import dns.ipv4
@@ -35,6 +32,7 @@ ntoa6 = dns.ipv6.inet_ntoa
 v4_bad_addrs = ['256.1.1.1', '1.1.1', '1.1.1.1.1',
                 '+1.1.1.1', '1.1.1.1+', '1..2.3.4', '.1.2.3.4',
                 '1.2.3.4.']
+
 
 class NtoAAtoNTestCase(unittest.TestCase):
 
@@ -228,6 +226,7 @@ class NtoAAtoNTestCase(unittest.TestCase):
         self.failUnless(dns.inet.is_multicast(t4))
         self.failIf(dns.inet.is_multicast(t5))
         self.failUnless(dns.inet.is_multicast(t6))
+
 
 if __name__ == '__main__':
     unittest.main()

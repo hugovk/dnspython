@@ -67,7 +67,7 @@ This is dnspython 1.15.0
 
 ## REQUIREMENTS
 
-Python 2.6 or later.
+Python 2.7 or later.
 
 
 ## HOME PAGE

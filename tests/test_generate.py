@@ -14,12 +14,8 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 import sys
+import unittest
 sys.path.insert(0, '../')  # Force the local project to be *the* dns
-
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
 
 import dns.exception
 import dns.rdata
@@ -134,6 +130,7 @@ ns2 3600 IN A 10.0.0.2
 $GENERATE 27-28 $.2 PTR zlb${-26}.oob
 """
 
+
 def _rdata_sort(a):
     return (a[0], a[2].rdclass, a[2].to_text())
 
@@ -233,6 +230,7 @@ class GenerateTestCase(unittest.TestCase):
                                     '10.0.0.8'))]
         exl.sort(key=_rdata_sort)
         self.failUnless(l == exl)
+
     def testGenerate1(self):
         z = dns.zone.from_text(example_text4, 'example.', relativize=True)
         l = list(z.iterate_rdatas())

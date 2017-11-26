@@ -14,10 +14,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 from io import BytesIO
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import binascii
 
@@ -26,6 +23,7 @@ import dns.rdataclass
 import dns.rdatatype
 import dns.rdtypes.ANY.TXT
 import dns.ttl
+
 
 class BugsTestCase(unittest.TestCase):
 
@@ -93,8 +91,9 @@ class BugsTestCase(unittest.TestCase):
         t4 = dns.rdtypes.ANY.TXT.TXT(dns.rdataclass.IN, dns.rdatatype.TXT,
                                      ['foo'])
         self.failUnless(t1 == t2)
-        self.failUnless(t1 == t2)
+        self.failUnless(t1 == t3)
         self.failUnless(t1 == t4)
+
 
 if __name__ == '__main__':
     unittest.main()

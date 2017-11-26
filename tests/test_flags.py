@@ -13,14 +13,12 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.flags
 import dns.rcode
 import dns.opcode
+
 
 class FlagsTestCase(unittest.TestCase):
 
@@ -34,11 +32,11 @@ class FlagsTestCase(unittest.TestCase):
         self.failUnless(dns.rcode.to_flags(dns.rcode.FORMERR) == (1, 0))
 
     def test_rcode4(self):
-        self.failUnless(dns.rcode.to_flags(dns.rcode.BADVERS) == \
+        self.failUnless(dns.rcode.to_flags(dns.rcode.BADVERS) ==
                         (0, 0x01000000))
 
     def test_rcode6(self):
-        self.failUnless(dns.rcode.from_flags(0, 0x01000000) == \
+        self.failUnless(dns.rcode.from_flags(0, 0x01000000) ==
                         dns.rcode.BADVERS)
 
     def test_rcode7(self):
@@ -50,11 +48,12 @@ class FlagsTestCase(unittest.TestCase):
         self.failUnlessRaises(ValueError, bad)
 
     def test_flags1(self):
-        self.failUnless(dns.flags.from_text("RA RD AA QR") == \
-                        dns.flags.QR|dns.flags.AA|dns.flags.RD|dns.flags.RA)
+        self.failUnless(dns.flags.from_text("RA RD AA QR") ==
+                        dns.flags.QR | dns.flags.AA | dns.flags.RD |
+                        dns.flags.RA)
 
     def test_flags2(self):
-        flags = dns.flags.QR|dns.flags.AA|dns.flags.RD|dns.flags.RA
+        flags = dns.flags.QR | dns.flags.AA | dns.flags.RD | dns.flags.RA
         self.failUnless(dns.flags.to_text(flags) == "QR AA RD RA")
 
 

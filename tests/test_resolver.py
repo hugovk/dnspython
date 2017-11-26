@@ -18,10 +18,7 @@ import select
 import sys
 import socket
 import time
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.message
 import dns.name
@@ -242,6 +239,7 @@ class BaseResolverTests(unittest.TestCase):
         name = dns.name.from_text('example.')
         answer = dns.resolver.Answer(name, dns.rdatatype.A, dns.rdataclass.IN,
                                      message, raise_on_no_answer=False)
+
         def test_python_internal_truth(answer):
             if answer:
                 return True
@@ -250,6 +248,7 @@ class BaseResolverTests(unittest.TestCase):
         self.assertFalse(test_python_internal_truth(answer))
         for a in answer:
             pass
+
 
 class PollingMonkeyPatchMixin(object):
     def setUp(self):
@@ -263,9 +262,11 @@ class PollingMonkeyPatchMixin(object):
 
         unittest.TestCase.tearDown(self)
 
+
 class SelectResolverTestCase(PollingMonkeyPatchMixin, BaseResolverTests, unittest.TestCase):
     def polling_backend(self):
         return dns.query._select_for
+
 
 if hasattr(select, 'poll'):
     class PollResolverTestCase(PollingMonkeyPatchMixin, BaseResolverTests, unittest.TestCase):

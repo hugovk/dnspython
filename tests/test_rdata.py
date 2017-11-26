@@ -13,14 +13,12 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 import dns.rdata
 import dns.rdataclass
 import dns.rdatatype
+
 
 class RdataTestCase(unittest.TestCase):
 
@@ -31,6 +29,7 @@ class RdataTestCase(unittest.TestCase):
     def test_unicode(self):
         rdata = dns.rdata.from_text(dns.rdataclass.IN, dns.rdatatype.A, u"1.2.3.4")
         self.failUnless(rdata.address == "1.2.3.4")
+
 
 if __name__ == '__main__':
     unittest.main()

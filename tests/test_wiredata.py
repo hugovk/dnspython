@@ -6,10 +6,7 @@
 # provided that the above copyright notice and this permission notice
 # appear in all copies.
 
-try:
-    import unittest2 as unittest
-except ImportError:
-    import unittest
+import unittest
 
 from dns.exception import FormError
 from dns.wiredata import WireData
@@ -124,3 +121,7 @@ class WireDataSlicingTestCase(unittest.TestCase):
         inst = WireData(b'0123456789')
         with self.assertRaises(FormError):
             inst[10]  # pylint: disable=pointless-statement
+
+
+if __name__ == '__main__':
+    unittest.main()

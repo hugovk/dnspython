@@ -244,7 +244,7 @@ def is_metatype(rdtype):
     Returns a ``bool``.
     """
 
-    if rdtype >= TKEY and rdtype <= ANY or rdtype in _metatypes:
+    if TKEY <= rdtype <= ANY or rdtype in _metatypes:
         return True
     return False
 

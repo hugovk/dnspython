@@ -251,7 +251,7 @@ def _escapify(label, unicode_mode=False):
         for c in bytearray(label):
             if c in _escaped:
                 text += '\\' + chr(c)
-            elif c > 0x20 and c < 0x7F:
+            elif 0x20 < c < 0x7F:
                 text += chr(c)
             else:
                 text += '\\%03d' % c
@@ -261,7 +261,7 @@ def _escapify(label, unicode_mode=False):
     if isinstance(label, binary_type):
         label = label.decode()
     for c in label:
-        if c > u'\x20' and c < u'\x7f':
+        if u'\x20' < c < u'\x7f':
             text += c
         else:
             if c >= u'\x7f':

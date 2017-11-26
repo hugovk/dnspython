@@ -67,7 +67,7 @@ def _escapify(qstring):
     for c in qstring:
         if c in __escaped:
             text += '\\' + chr(c)
-        elif c >= 0x20 and c < 0x7F:
+        elif 0x20 <= c < 0x7F:
             text += chr(c)
         else:
             text += '\\%03d' % c

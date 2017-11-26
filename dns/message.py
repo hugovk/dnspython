@@ -1040,10 +1040,10 @@ def from_file(f):
     """
 
     str_type = string_types
-    opts = 'rU'
+    opts = 'r'
 
     if isinstance(f, str_type):
-        f = open(f, opts)
+        f = open(f, opts, newline=None)
         want_close = True
     else:
         want_close = False

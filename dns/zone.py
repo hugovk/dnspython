@@ -1021,12 +1021,12 @@ def from_file(f, origin=None, rdclass=dns.rdataclass.IN,
     """
 
     str_type = string_types
-    opts = 'rU'
+    opts = 'r'
 
     if isinstance(f, str_type):
         if filename is None:
             filename = f
-        f = open(f, opts)
+        f = open(f, opts, newline=None)
         want_close = True
     else:
         if filename is None:
